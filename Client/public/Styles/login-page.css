@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #FFF5E4;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    width: 60vw;
+    height: 80vh;
+    display: flex;
+    background-color: #FFE3E1;
+    border-radius: 11px;
+    box-shadow: 0 0 1rem 0 black;
+}
+
+.login-img{
+    height: 100%;
+    width: 45%;
+    overflow: hidden;
+    clip-path: polygon(0% 0%, 100% 0, 90% 100%, 0 100%);
+}
+
+.login-img img{
+    height: 100%;
+    transform: scaleX(-1);
+    object-fit: contain;
+    border-radius: 11px;
+}
+
+.login-details{
+    height: 100%;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.title{
+    /* margin-top: 10%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
+}
+
+.title span{
+    font-family: 'Cherry Bomb One', cursive;
+    font-size: 5rem;
+    height: 6rem;
+}
+
+.user-type{
+    z-index: 1;
+    width: 60%;
+    min-width: 15rem;
+    height: 3.5rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #FFD1D1;
+    display: flex;
+    box-shadow: 0 6px 6px -2px #FF9494;
+    align-items: center;
+    margin-top: auto;
+}
+
+.user-type span{
+    font-family: 'Monomaniac One', sans-serif;
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
+    color: #700000;
+}
+
+.user-form{
+    width: 60%;
+    min-width: 15rem;
+    height: 40%;
+    padding: 0 2rem;
+    background-color: #FFD1D1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 6px 0 #FF9494;
+}
+
+.user-form input{
+    height: 2.5rem;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0.3rem 0;
+    background-color: rgb(233, 233, 233);
+    padding-left: 0.5rem;
+}
+
+.user-form input:focus{
+    border: 2px solid #FF9494;
+    background-color: white;
+}
+
+.user-form input::placeholder{
+    font-weight: 100;
+    font-size: 0.8rem;
+}
+
+.user-form input:nth-child(1){
+    margin-top: 15%;
+}
+
+.user-form button{
+    margin-top: 10%;
+    height: 3rem;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: #700000;
+    color: #FFD1D1;
+    border-radius: 5px;
+
+}
+
+.user-form button:hover{
+    cursor: pointer;
+    background-color: #000000;
+    color: #FF9494;
+}
+
+.user-form button:disabled{
+    background-color: grey;
+    color: white;
+    cursor: default;
+}
+
+.toggle-login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: auto;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.toggle-login-info{
+    font-family: 'Monomaniac One', sans-serif;
+}
+
+.toggle-login-info:hover{
+    cursor: default;
+}
+
+.toggle-login{
+    font-family: 'Monomaniac One', sans-serif;
+    color: #700000;
+}
+
+.toggle-login:hover{
+    color: #000000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#register-form input:nth-child(1){
+    margin-top: 5%;
+}
