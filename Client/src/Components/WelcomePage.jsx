@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Cookies from 'js-cookie'
 import "../Assets/Styles/welcome-page.css"
-import loginPageimg from "../Assets/Images/loginpageimg.jpg"
+import loginPageimg from "../Assets/Images/LoginPageImg.jpg"
 import LoginPage from "./LoginPage"
 import Room from "./Room"
 
