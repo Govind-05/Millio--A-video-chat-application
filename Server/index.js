@@ -11,18 +11,12 @@ dotenv.config();
 import authenticateToken from "./Middlewares/jwtAuth.js"
 
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_DOMAIN, credentials: true, exposedHeaders: ["set-cookie"] }));
+app.use(cors({ origin: true, credentials: true, exposedHeaders: ["set-cookie"] }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 app.set("trust proxy", 1);
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_DOMAIN);
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-    next();
-});
+
 
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_URI);
