@@ -11,7 +11,7 @@ dotenv.config();
 import authenticateToken from "./Middlewares/jwtAuth.js"
 
 const app = express();
-app.use(cors([{ origin: process.env.CLIENT_DOMAIN, credentials: true, exposedHeaders: ["set-cookie"] }]));
+app.use(cors({ origin: process.env.CLIENT_DOMAIN, credentials: true, exposedHeaders: ["set-cookie"] }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -37,7 +37,7 @@ app.post("/registerUser", async (req, res) => {
         const user = { username: req.body.username }
         const accessToken = jwt.sign(user, process.env.TOKEN_SECRET);
 
-        res.cookie("username", req.body.username, { sameSite: "none", secure}).cookie("accessToken", accessToken, { httpOnly: true, sameSite: "none", secure}).send({ msg: "Done", accessToken });
+        res.cookie("username", req.body.username).cookie("accessToken", accessToken, { httpOnly: true}).send({ msg: "Done", accessToken });
     } catch (error) {
         res.send({ msg: error.code });
     }
@@ -54,7 +54,7 @@ app.post("/loginUser", async (req, res) => {
                     const user = { username: req.body.username }
                     const accessToken = jwt.sign(user, process.env.TOKEN_SECRET);
 
-                    res.cookie("username", req.body.username, { sameSite: "none", secure}).cookie("accessToken", accessToken, { httpOnly: true, secure, sameSite: "none"}).send({ msg: "User logged in" })
+                    res.cookie("username", req.body.username,{sameSite:"none",secure}).cookie("accessToken", accessToken, { httpOnly: true,sameSite:"none",secure}).send({ msg: "User logged in" })
 
                 } else {
                     res.send({ msg: "error" })
