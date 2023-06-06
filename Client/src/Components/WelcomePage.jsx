@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Cookies from 'js-cookie'
 import "../Assets/Styles/welcome-page.css"
-import loginPageImg from "../Assets/Images/loginpageImg.jpg"
+import loginPageimg from "../Assets/Images/loginpageimg.jpg"
 import LoginPage from "./LoginPage"
 import Room from "./Room"
 
@@ -20,7 +20,7 @@ export default function WelcomePage() {
     <>
       <div className="login-container">
         <div className="login-img">
-          <img src={loginPageImg} alt="login page image" />
+          <img src={loginPageimg} alt="login page image" />
         </div>
         <div className="login-details">
           <div className="title">
