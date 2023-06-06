@@ -11,11 +11,18 @@ dotenv.config();
 import authenticateToken from "./Middlewares/jwtAuth.js"
 
 const app = express();
-app.use(cors({origin:process.env.CLIENT_DOMAIN,credentials:true,exposedHeaders: ["set-cookie"]}));
+app.use(cors({ origin: process.env.CLIENT_DOMAIN, credentials: true, exposedHeaders: ["set-cookie"] }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 app.set("trust proxy", 1);
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", process.env.CLIENT_DOMAIN);
+    res.setHeader("Access-Control-Allow-Credentials", true);
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    next();
+});
 
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_URI);
@@ -36,7 +43,7 @@ app.post("/registerUser", async (req, res) => {
         const user = { username: req.body.username }
         const accessToken = jwt.sign(user, process.env.TOKEN_SECRET);
 
-        res.cookie("username",req.body.username,{sameSite:"none",secure:true}).cookie("accessToken",accessToken,{httpOnly:true,sameSite:"none",secure:true}).send({ msg: "Done", accessToken });
+        res.cookie("username", req.body.username, { sameSite: "none", secure: true }).cookie("accessToken", accessToken, { httpOnly: true, sameSite: "none", secure: true }).send({ msg: "Done", accessToken });
     } catch (error) {
         res.send({ msg: error.code });
     }
@@ -53,8 +60,8 @@ app.post("/loginUser", async (req, res) => {
                     const user = { username: req.body.username }
                     const accessToken = jwt.sign(user, process.env.TOKEN_SECRET);
 
-                    res.cookie("username",req.body.username,{sameSite:"none",secure:true}).cookie("accessToken",accessToken,{httpOnly:true,secure:true,sameSite:"none"}).send({ msg: "User logged in"})
-                    
+                    res.cookie("username", req.body.username, { sameSite: "none", secure: true }).cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none" }).send({ msg: "User logged in" })
+
                 } else {
                     res.send({ msg: "error" })
                 }
@@ -67,14 +74,14 @@ app.post("/loginUser", async (req, res) => {
     }
 });
 
-app.post("/checkUser",authenticateToken,(req,res)=>{
+app.post("/checkUser", authenticateToken, (req, res) => {
     res.sendStatus(200);
 });
 
-app.post("/logoutUser",(req,res)=>{
-    res.clearCookie("accessToken").send({msg:"Done"});
+app.post("/logoutUser", (req, res) => {
+    res.clearCookie("accessToken").send({ msg: "Done" });
 })
-const port = process.env.PORT||3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
