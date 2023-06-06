@@ -1,13 +1,17 @@
-import { useRef, useState } from "react";
 import axios from "axios";
+import { useRef, useState } from "react";
 
-export default function Login() {
+axios.defaults.withCredentials=true;
+
+export default function Login(props) {
 
   const [error,setError]=useState(false);
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
   const usernameRef=useRef();
   const passwordRef=useRef();
+  const {setIsLogin}=props;
+
 
   const handleChange=(e)=>{
     if(e.target.name==="username"){
@@ -27,19 +31,20 @@ export default function Login() {
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    },{withCredentials:true});
 
     if (response.data.msg === "error") {
       setError(true);
       setTimeout(() => {
         setError(false)
       }, 2000)
+      setUsername("");
+      setPassword("");
     }else{
       console.log(response.data.msg);
+      setIsLogin(true);
     }
 
-    setUsername("");
-    setPassword("");
     
   }
 

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+
+#videos{
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    overflow:hidden;
+}
+
+
+.video-player{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+#user-2{
+    display: none;
+}
+
+.smallFrame{
+    position: fixed;
+    top: 5%;
+    left: 2%;
+    height: 170px;
+    width: 300px;
+    border-radius: 5px;
+    border:2px solid #b366f9;
+    -webkit-box-shadow: 3px 3px 15px -1px rgba(0,0,0,0.77);
+    box-shadow: 3px 3px 15px -1px rgba(0,0,0,0.77);
+    z-index: 999;
+}
+
+.your-name{
+    z-index: 999;
+    position: absolute;
+    background-color: grey;
+    padding: 0.3rem;
+    top: 22.5%;
+    border-radius: 5px;
+    font-size:1.5rem;
+    left: 2%;
+}
+
+.your-name span{
+    color: white;
+}
+
+.contact-name{
+    z-index: 999;
+    position: absolute;
+    background-color: grey;
+    padding: 0.3rem;
+    top: 90%;
+    border-radius: 5px;
+    font-size:1.5rem;
+    left: 94%;
+}
+
+.contact-name span{
+    color: white;
+}
+
+.code{
+    background-color: white;
+    position: absolute;
+    font-size: 1.5rem;
+    top: 3%;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 10px;
+    right: 2%;
+}
+
+.code:hover{
+    cursor: default;
+    background-color: rgb(232, 232, 232);
+}
+
+.code span{
+    font-family: 'Monomaniac One', sans-serif;
+}
+
+#controls{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform:translateX(-50%);
+    display: flex;
+    gap: 1em;
+}
+
+
+.control-container{
+  background-color: rgba(121, 0, 234, 0.9);
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.control-container img{
+    height: 30px;
+    width: 30px;
+}
+
+.control-container:hover{
+    transform: translateY(-10px);
+    background-color: rgba(69, 4, 129, 0.9);
+
+}
+
+.control-container-off{
+    background-color: black
+}
+
+#leave-btn{
+    background-color: rgb(175, 43, 43);
+}
+
+#leave-btn:hover{
+    background-color: rgb(149, 29, 29);
+}
+
+
+@media screen and (max-width:600px) {
+        .smallFrame{
+            height: 80px;
+            width: 120px;
+        }
+
+        .control-container img{
+            height: 20px;
+            width: 20px;
+        }
+}

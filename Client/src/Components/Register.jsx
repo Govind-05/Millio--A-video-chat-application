@@ -1,7 +1,9 @@
 import { useRef, useState } from "react"
-import axios from "axios"
+import axios from "axios";
+axios.defaults.withCredentials=true;
 
-export default function Register() {
+
+export default function Register(props) {
 
     const [diffPass, setDiffPass] = useState(true);
     const [passwordValue, setPasswordValue] = useState("");
@@ -10,6 +12,7 @@ export default function Register() {
     const [error, setError] = useState(false);
     const passwordRef = useRef();
     const usernameRef = useRef();
+    const {setIsLogin}=props;
 
     const handlePassChange = (event) => {
         if (event.target.name === "password") {
@@ -43,19 +46,21 @@ export default function Register() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        },{withCredentials:true})
 
         if (response.data.msg === 11000) {
             setError(true);
             setTimeout(() => {
                 setError(false)
             }, 2000)
+            setUsername("");
+            setPasswordValue("");
+            setConfPasswordValue("");
+            setDiffPass(true);
+        }else{
+            setIsLogin(true);
         }
 
-        setUsername("");
-        setPasswordValue("");
-        setConfPasswordValue("");
-        setDiffPass(true);
 
     }
 

@@ -1,0 +1,16 @@
+.room-form{
+    justify-content: center;
+}
+
+.room-form button{
+    height: 4rem;
+}
+
+.room-form button:nth-child(1){
+    margin-top: 0;
+}
+
+.room-form input{
+    margin-top: 0 !important;
+    height: 3rem;
+}
