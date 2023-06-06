@@ -15,6 +15,7 @@ app.use(cors({origin:process.env.CLIENT_DOMAIN,credentials:true,exposedHeaders: 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
+app.set("trust proxy", 1);
 
 mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_URI);
