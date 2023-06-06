@@ -9,6 +9,7 @@ export default function Meet() {
     const [code, setCode] = useState("");
     const [isAlone, setIsAlone] = useState(true);
     const[contact,setContact]=useState("")
+    const[isLeft,setIsleft]=useState(false);
 
     useEffect(() => {
         let APP_ID = "a8e256ddb001489582f045c1506079ac";
@@ -111,7 +112,7 @@ export default function Meet() {
         const createPeerConnection = async (MemberId) => {
             peerConnection = new RTCPeerConnection(servers);
 
-            remoteStream = new MediaStream()
+            remoteStream = new MediaStream();
             document.getElementById('user-2').srcObject = remoteStream
             document.getElementById('user-2').style.display = 'block'
 
@@ -201,14 +202,19 @@ export default function Meet() {
             await client.logout();
         }
 
+
         document.getElementById('camera-btn').addEventListener('click', toggleCamera);
         document.getElementById('mic-btn').addEventListener('click', toggleMic);
 
-
-        init();
+            init();
+            
     }, [])
 
 
+    // const handleClick=async()=>{
+    //     await leaveChannel();
+    //     navigate('/');
+    // }
 
     return (
         <>
@@ -236,7 +242,7 @@ export default function Meet() {
                 </div>
 
                 <a href="/">
-                    <div className="control-container" id="leave-btn">
+                    <div className="control-container" id="leave-btn" >
                         <img src="./public/Images/phone.png" />
                     </div>
                 </a>
