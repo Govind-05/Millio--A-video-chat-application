@@ -11,7 +11,7 @@ dotenv.config();
 import authenticateToken from "./Middlewares/jwtAuth.js"
 
 const app = express();
-app.use(cors({origin:process.env.CLIENT_DOMAIN,credentials:true}));
+app.use(cors({origin:process.env.CLIENT_DOMAIN,credentials:true,exposedHeaders: ["set-cookie"]}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -52,7 +52,7 @@ app.post("/loginUser", async (req, res) => {
                     const user = { username: req.body.username }
                     const accessToken = jwt.sign(user, process.env.TOKEN_SECRET);
 
-                    res.cookie("username",req.body.username,{sameSite:"lax"}).cookie("accessToken",accessToken,{httpOnly:true,domain:process.env.CLIENT_DOMAIN,sameSite:"lax"}).send({ msg: "User logged in"})
+                    res.cookie("username",req.body.username,{sameSite:"none"}).cookie("accessToken",accessToken,{httpOnly:true,domain:process.env.CLIENT_DOMAIN,sameSite:"none"}).send({ msg: "User logged in"})
                     
                 } else {
                     res.send({ msg: "error" })
