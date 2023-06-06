@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import "../../public/Styles/meet.css"
+import "../Assets/Styles/meet.css"
 import { useNavigate } from "react-router-dom";
-
+import camera from "../Assets/Images/camera.png"
+import mic from "../Assets/Images/mic.png"
+import phone from "../Assets/Images/phone.png"
 
 export default function Meet() {
 
@@ -234,16 +236,16 @@ export default function Meet() {
             <div id="controls">
 
                 <div className="control-container" id="camera-btn">
-                    <img src="./public/Images/camera.png" />
+                    <img src={camera} />
                 </div>
 
                 <div className="control-container" id="mic-btn">
-                    <img src="./public/Images/mic.png" />
+                    <img src={mic} />
                 </div>
 
                 <a href="/">
                     <div className="control-container" id="leave-btn" >
-                        <img src="./public/Images/phone.png" />
+                        <img src={phone} />
                     </div>
                 </a>
 

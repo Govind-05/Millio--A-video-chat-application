@@ -1,5 +1,5 @@
 import { useState,useRef } from "react"
-import "../../public/Styles/room-page.css"
+import "../Assets/Styles/room-page.css"
 import Cookies from 'js-cookie'
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
