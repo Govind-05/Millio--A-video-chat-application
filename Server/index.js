@@ -11,7 +11,7 @@ dotenv.config();
 import authenticateToken from "./Middlewares/jwtAuth.js"
 
 const app = express();
-app.use(cors({ origin: true, credentials: true, exposedHeaders: ["set-cookie"] }));
+app.use(cors([{ origin: process.env.CLIENT_DOMAIN, credentials: true, exposedHeaders: ["set-cookie"] }]));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
