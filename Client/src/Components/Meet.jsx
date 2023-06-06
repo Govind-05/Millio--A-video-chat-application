@@ -19,7 +19,8 @@ export default function Meet() {
         let token = null;
 
         let Cookies = document.cookie.split(";").map(cookie => cookie.split("=")).reduce((accumualtor, [key, value]) => ({ ...accumualtor, [key.trim()]: decodeURIComponent(value) }), {})
-        let uid = 1
+        
+        let uid = String(Math.floor(Math.random()*10000))
         console.log(uid);
 
         let client;
