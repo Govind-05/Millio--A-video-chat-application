@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import Cookies from "js-cookie";
 
 axios.defaults.withCredentials=true;
 
@@ -42,6 +43,7 @@ export default function Login(props) {
       setPassword("");
     }else{
       console.log(response.data.msg);
+      console.log("the cookies are",Cookies.get("username"))
       setIsLogin(true);
     }
 

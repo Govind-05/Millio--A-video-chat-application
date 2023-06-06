@@ -53,6 +53,7 @@ app.post("/loginUser", async (req, res) => {
                     const accessToken = jwt.sign(user, process.env.TOKEN_SECRET);
 
                     res.cookie("username",req.body.username,{domain:process.env.CLIENT_DOMAIN}).cookie("accessToken",accessToken,{httpOnly:true,domain:process.env.CLIENT_DOMAIN}).send({ msg: "User logged in"})
+                    
                 } else {
                     res.send({ msg: "error" })
                 }
