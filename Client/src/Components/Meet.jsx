@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import camera from "../Assets/Images/camera.png"
 import mic from "../Assets/Images/mic.png"
 import phone from "../Assets/Images/phone.png"
-import "../Assets/Scripts/agora-rtm-sdk-1.5.1.js"
+import AgoraRTM from 'agora-rtm-sdk'
 
 export default function Meet() {
 
