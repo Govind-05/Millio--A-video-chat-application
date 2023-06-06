@@ -19,7 +19,7 @@ export default function Meet() {
         let token = null;
 
         let Cookies = document.cookie.split(";").map(cookie => cookie.split("=")).reduce((accumualtor, [key, value]) => ({ ...accumualtor, [key.trim()]: decodeURIComponent(value) }), {})
-        let uid = Cookies.username;
+        let uid = 1
         console.log(uid);
 
         let client;
