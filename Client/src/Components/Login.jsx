@@ -32,7 +32,7 @@ export default function Login(props) {
       headers: {
         'Content-Type': 'application/json'
       }
-    },{withCredentials:"same-origin"});
+    },{withCredentials:true,credentials:"include"});
 
     if (response.data.msg === "error") {
       setError(true);
