@@ -45,6 +45,7 @@ export default function Login(props) {
       console.log(response.data.msg);
       console.log("the cookies are",Cookies.get("username"))
       console.log(document.cookie);
+      Cookies.set("username",usernameRef.current.value)
       
       setIsLogin(true);
     }
