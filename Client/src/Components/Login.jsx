@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import Cookies from "js-cookie";
 
-axios.defaults.withCredentials=true;
+// axios.defaults.withCredentials=true;
 
 export default function Login(props) {
 
@@ -32,7 +32,7 @@ export default function Login(props) {
       headers: {
         'Content-Type': 'application/json'
       }
-    },{withCredentials:true});
+    },{withCredentials:"same-origin"});
 
     if (response.data.msg === "error") {
       setError(true);
