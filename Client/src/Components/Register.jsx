@@ -71,7 +71,7 @@ export default function Register(props) {
             <input ref={usernameRef} type="text" placeholder="Enter Your Username" value={username} onChange={(e) => { setUsername(e.target.value) }} required spellCheck="false" />
             <input ref={passwordRef} type="password" value={passwordValue} onChange={handlePassChange} name="password" placeholder="Enter Your Password" required />
             <input type="password" value={confPasswordValue} onChange={handlePassChange} name="confPassword" placeholder="Confirm Your Password" required />
-            {error && <span style={{ fontWeight: "600" }}>*Username already exists!</span>}
+            {error && <span className="error-msg" style={{ fontWeight: "600" }}>*Username already exists!</span>}
             <button disabled={diffPass} type="submit" id="register-btn" style={{ marginTop: error && "2.4%" }}>SIGN UP</button>
         </form>
 

@@ -54,13 +54,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 6rem;
+    height: 25%;
 }
 
 .title span{
     font-family: 'Cherry Bomb One', cursive;
     font-size: 5rem;
-    height: 6rem;
 }
 
 .user-type{
@@ -74,7 +73,7 @@ body{
     display: flex;
     box-shadow: 0 6px 6px -2px #FF9494;
     align-items: center;
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 .user-type span{
@@ -175,4 +174,115 @@ body{
 
 #register-form input:nth-child(1){
     margin-top: 5%;
+}
+
+/* MEDIA QUERIES for smaller devices*/
+
+@media (min-width:380px) and (max-width:750px) {
+    .login-container{
+        width: 90vw;
+        height: 70vh;
+    }
+
+    .login-img{
+        display: none;
+    }
+
+    .login-details{
+        width: 100%;
+    }
+
+    .title span{
+        font-size: 6.2rem;
+    }
+
+    .user-type{
+        width: 90%;
+    }
+
+    .user-form{
+        width: 90%;
+    }
+
+    .user-form button{
+        height: 2.5rem;
+    }
+
+    .error-msg{
+        font-size: 0.6rem;
+    }
+}
+
+@media (min-width:270px) and (max-width:380px) {
+    
+    .login-container{
+        width: 90vw;
+        height: 70vh;
+    }
+
+    .login-img{
+        display: none;
+    }
+
+    .login-details{
+        width: 100%;
+    }
+
+    .title span{
+        font-size: 25vw;
+    }
+
+    .user-type{
+        width: 90%;
+    }
+
+    .user-form{
+        width: 90%;
+    }
+
+    .user-form input:nth-child(1){
+        margin-top: 7%;
+    }
+
+    .user-form button{
+        height: 2.5rem;
+    }
+
+    .error-msg{
+        font-size: 0.6rem;
+    }
+}
+
+/* MEDIA QUERIES FOR Tablets */
+
+@media (min-width:750px) and (max-width:920px) {
+    .login-container{
+        width: 95vw;
+        height: 70vh;
+    }
+
+    .login-img{
+        width: 55%;
+    }
+
+    .login-details{
+        width: 45%;
+    }
+
+    .title{
+        height: 32%;
+        align-items: flex-end;
+    }
+
+    .title span{
+        font-size: 5.7rem;
+    }
+    .user-type{
+        width: 90%;
+    }
+
+    .user-form{
+        width: 90%;
+        height: 29%;
+    }
 }

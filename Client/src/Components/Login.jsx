@@ -38,7 +38,7 @@ export default function Login(props) {
       setError(true);
       setTimeout(() => {
         setError(false)
-      }, 2000)
+      }, 3000)
       setUsername("");
       setPassword("");
     }else{
@@ -59,7 +59,7 @@ export default function Login(props) {
     <form className="user-form" onSubmit={handleSubmit}>
       <input ref={usernameRef} type="text" name="username" value={username} onChange={handleChange} placeholder="Enter Your Username" required spellCheck="false" />
       <input ref={passwordRef} type="password" name="password" value={password} onChange={handleChange} placeholder="Enter Your Password" required />
-      {error && <span style={{ fontWeight: "600" }}>*Invalid Credentials!</span>}
+      {error && <span className="error-msg" style={{ fontWeight: "600" }}>*Invalid Credentials!</span>}
       <button type="submit" style={{ marginTop: error && "2.4%" }}>SIGN IN</button>
     </form>
 

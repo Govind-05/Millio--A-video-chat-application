@@ -11,8 +11,6 @@ export default function Meet() {
     const navigate = useNavigate();
     const [code, setCode] = useState("");
     const [isAlone, setIsAlone] = useState(true);
-    const[contact,setContact]=useState("")
-    const[isLeft,setIsleft]=useState(false);
 
     useEffect(() => {
         let APP_ID = "a8e256ddb001489582f045c1506079ac";
@@ -57,7 +55,7 @@ export default function Meet() {
         }
 
         const init = async () => {
-            client = await AgoraRTM.createInstance(APP_ID);
+            client = AgoraRTM.createInstance(APP_ID);
             await client.login({ uid, token });
 
             channel = client.createChannel(meetId);
@@ -74,7 +72,6 @@ export default function Meet() {
 
 
         const handleUserLeft = (MemberId) => {
-            setIsAlone(true)
             document.getElementById('user-2').style.display = 'none'
             document.getElementById('user-1').classList.remove('smallFrame');
         }
@@ -84,15 +81,11 @@ export default function Meet() {
             message = JSON.parse(message.text);
 
             if (message.type === 'offer') {
-                setIsAlone(false)
-                setContact(message.username)
                 console.log("OFFER FROM", message.username);
                 createAnswer(MemberId, message.offer);
             }
 
             if (message.type === 'answer') {
-                setIsAlone(false)
-                setContact(message.username)
                 console.log("Answer FROM", message.username);
                 addAnswer(message.answer);
             }
@@ -107,7 +100,6 @@ export default function Meet() {
         }
 
         const handleUserJoined = async (MemberId) => {
-            setIsAlone(false)
             console.log('A new user joined the channel:', MemberId);
             createOffer(MemberId);
         }
@@ -151,7 +143,7 @@ export default function Meet() {
             let offer = await peerConnection.createOffer();
             await peerConnection.setLocalDescription(offer);
 
-            client.sendMessageToPeer({ text: JSON.stringify({ 'type': 'offer', 'offer': offer, "username": uid }) }, MemberId);
+            client.sendMessageToPeer({ text: JSON.stringify({ 'type': 'offer', 'offer': offer}) }, MemberId);
         }
 
 
@@ -163,7 +155,7 @@ export default function Meet() {
             let answer = await peerConnection.createAnswer();
             await peerConnection.setLocalDescription(answer);
 
-            client.sendMessageToPeer({ text: JSON.stringify({ 'type': 'answer', 'answer': answer, "username": uid }) }, MemberId);
+            client.sendMessageToPeer({ text: JSON.stringify({ 'type': 'answer', 'answer': answer }) }, MemberId);
         }
 
 
@@ -225,11 +217,6 @@ export default function Meet() {
             <div id="videos">
                 <video className="video-player" id="user-1" autoPlay playsInline></video>
                 <video className="video-player" id="user-2" autoPlay playsInline></video>
-                {!isAlone && <>
-                    <div className="your-name"><span>You</span></div>
-                    <div className="your-name contact-name"><span>{contact}</span></div>
-                </>}
-
             </div>
             <div className="code">
                 <span>{code}</span>
