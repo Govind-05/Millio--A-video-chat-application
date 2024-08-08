@@ -12,7 +12,7 @@ export default function Register(props) {
     const [error, setError] = useState(false);
     const passwordRef = useRef();
     const usernameRef = useRef();
-    const {setIsLogin}=props;
+    const {setIsLogin,setFormType}=props;
 
     const handlePassChange = (event) => {
         if (event.target.name === "password") {
@@ -58,7 +58,8 @@ export default function Register(props) {
             setConfPasswordValue("");
             setDiffPass(true);
         }else{
-            setIsLogin(true);
+            // setIsLogin(true);
+            setFormType(true)
         }
 
 

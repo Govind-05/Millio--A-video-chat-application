@@ -26,7 +26,7 @@ export default function LoginPage(props) {
                     <div className="user-type">
                         <span>New Member</span>
                     </div>
-                    <Register setIsLogin={setIsLogin}/>
+                    <Register setIsLogin={setIsLogin} setFormType={setFormType}/>
                     <div className="toggle-login-container">
                         <span className="toggle-login-info">Already have an account?</span>
                         <span className="toggle-login" onClick={() => setFormType(true)}>Login here</span>
